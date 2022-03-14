@@ -1,5 +1,52 @@
 # Datebase-learn
 
+# 第3章 关系数据库标准语言SQL
+- SQL(Structured Query Language) 结构化查询语言
+
+## 3.1 SQL概述
+
+### 3.1.2 SQL的特点
+- SQL的特点：
+    - 数据查询(data query)
+    - 数据操纵(data manipulation)
+    - 数据定义(data definition)
+    - 数据控制(data control)
+
+#### 1.综合统一
+- 非关系模型（层次模型、网状模型）的数据语言一般分为：
+    - （1）模式数据定义语言(Schema Data Definition Language, 模式DDL)
+    - （2）外模式数据定义语言(Subschema Data Definition Language, 外模式DDL或子模式DDL)
+    - （3）数据存储有关的描述语言(Data Storage Description Language, DSDL)
+    - （4）数据操作语言(Data Manipulation Language, DML)
+
+#### 2.高度非过程化
+- 只要提出“做什么”，而无需指明“怎么做”，因此无需了解存储路径。存取路径的选择以及SQL的操作过程有系统自动完成（“面向过程”语言，只需提出“做什么”）
+
+#### 3.面向集合的操作方式
+- SQL采用集合操作方式，以元组的集合为操作对象
+
+#### 4.同一种语法结构提供多种使用方式
+- SQL能嵌入到高级语言中
+
+#### 5.语言简洁，易学易用
+- SQL功能极强，由于设计巧妙，语言十分简洁，完成核心功能只用了9个动词。SQL接近口语，因此易于学习和使用
+
+SQL功能   |   动词
+-----     |   -----
+数据查询  |   SELECT
+数据定义  |   CREATE, DROP, ALTER
+数据操纵  |   INSERT, UPDATE, 
+数据控制  |   GRANT, REVOKE
+
+## 3.3 数据定义
+
+## 3.4 数据查询
+
+## 3.5 数据更新
+
+## 3.6 空值的处理
+
+## 3.7 视图
 # 第8章 数据库编程
 
 - SQL的两种使用方式
