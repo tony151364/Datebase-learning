@@ -1,4 +1,51 @@
-# Datebase-learn
+# 第1章 绪论
+
+## 1.1数据库系统概述
+
+## 1.2 数据模型
+
+
+
+关系术语   |    一般表格的术语  
+:--------: | :---------------:
+关系名     |    表名
+关系模式   |    表头（表格的描述）
+关系       |    （一张）二维表  
+元组       |    记录或行
+属性       |    列
+属性名     |    列名
+属性值     |    列值
+分量       |    一条记录中的一个列值
+非规范关系  |   表中有表（大表中嵌有小表）
+
+- 关系的完整性约束条件包括三大类：实体完整性、参照完整性和用户定义的完整性
+
+## 1.3 数据库系统的结构
+### 1.3.1 数据库系统模式
+- 在数据模式中有“型” (type) 和“值” (value) 的概念
+- 模式(schema)是数据库中全体数据的逻辑结构和特征的描述，仅仅设计型的描述
+- 模式是相对稳定的，而实例是相对变动的
+
+### 1.3.1 数据库系统的三级模式
+
+#### 1.模式(schema)
+- 模式也称**逻辑**模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图
+- 模式实际上是数据库数据在逻辑级上的**视图**。
+- DBMS中提供模式定义语言（模式DDL）来严格地定义模式
+
+- 模式对应计算机系统软件中对数据库管理时所能看到的数据描述。
+
+
+#### 2.外模式(external schema)
+- 外模式也称子模式(subschema) 或用户模式，它是数据库**用户**（包括应用程序员和最终用户）**能够看见**和使用的局部数据的逻辑结构和特征的描述，**是数据库用户的数据视图**，是与某一应用有关的数据的逻辑表示。
+- 用户只能看自己想看的数据，保证了数据库的安全性
+- 子模式对应计算机应用软件中对数据库的操作时能查看和使用到的部分的描述。
+
+#### 2.内模式(internal schema)
+- 内模式也称存储模式(storage schema), 一个数据库只有一个内模式。它是数据物理结构和存储方式的描述，是数据在数据库内部的组织方式。
+- 内模式对应计算机硬件中对数据存储的描述。
+
+### 1.3.3 数据库的二级映像功能与数据独立性
 
 # 第3章 关系数据库标准语言SQL
 - SQL(Structured Query Language) 结构化查询语言
@@ -20,7 +67,7 @@
     - （4）数据操作语言(Data Manipulation Language, DML)
 
 #### 2.高度非过程化
-- 只要提出“做什么”，而无需指明“怎么做”，因此无需了解存储路径。存取路径的选择以及SQL的操作过程有系统自动完成（“面向过程”语言，只需提出“做什么”）
+- 只要提出“做什么”，而无需指明“怎么做”，因此无需了解存储路径。存取路径的选择以及SQL的操作过程由系统自动完成（“面向过程”语言，只需提出“做什么”）
 
 #### 3.面向集合的操作方式
 - SQL采用集合操作方式，以元组的集合为操作对象
@@ -38,7 +85,54 @@ SQL功能   |   动词
 数据操纵  |   INSERT, UPDATE, 
 数据控制  |   GRANT, REVOKE
 
+### 3.1.3 SQL的基本概念
+
+
+
 ## 3.3 数据定义
+```sql
+create database ST;
+drop database ST;
+create schema ST;
+drop schema ST;
+
+
+/* 建立“学生”表 Student*/
+CREATE TABLE Student
+(Sno char(9) primary key,
+Sname char(20) UNIQUE,
+Ssex CHAR(20),
+Sage SMALLINT, 
+Sdept char(20)
+);
+drop table student;
+
+
+/*建立“课程”表Course*/
+CREATE TABLE Course
+(Cno CHAR(4) PRIMARY KEY,
+Cname CHAR(16),
+Cpno CHAR(4),
+Ccredit SMALLINT,
+FOREIGN KEY(Cpno) REFERENCES Course(Cno)
+);
+drop table course;
+
+
+CREATE TABLE SC
+(Sno CHAR(9),
+Cno CHAR(4),
+Grade SMALLINT,
+PRIMARY KEY (Sno,Cno),
+FOREIGN KEY(Sno) REFERENCES Student(Sno),
+FOREIGN KEY(Cno)REFERENCES Course(Cno)
+);
+drop table sc;
+
+
+/*alter table student add homme char(10);*/
+/*alter table student drop column homme;*/
+```
 
 ## 3.4 数据查询
 
@@ -47,6 +141,7 @@ SQL功能   |   动词
 ## 3.6 空值的处理
 
 ## 3.7 视图
+
 # 第8章 数据库编程
 
 - SQL的两种使用方式
